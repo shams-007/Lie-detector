@@ -102,7 +102,7 @@ for q in questions:
     if questions[0] in answers and questions[8] in answers:
         if answers[questions[0]] == "yes" and answers[questions[8]] == "yes":
             if "cont1" not in triggered:
-                print("⚠ CONTRADICTION DETECTED: You lied recently but consider yourself honest?")
+                print("⚠ CONTRADICTION DETECTED. You lied. But you're honest. Okay bro.")
                 cont_score += 5
                 triggered.add("cont1")
 
@@ -110,7 +110,7 @@ for q in questions:
     if questions[2] in answers and questions[6] in answers:
         if answers[questions[2]] == "yes" and answers[questions[6]] == "yes":
             if "cont2" not in triggered:
-                print("⚠ CONTRADICTION DETECTED: Confident yet always doubting yourself?")
+                print("⚠ CONTRADICTION DETECTED. Bro is confident and indecisive at the same time. Nice")
                 cont_score += 5
                 triggered.add("cont2")
 
