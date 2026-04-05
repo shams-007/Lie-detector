@@ -3,16 +3,18 @@ import time
 
 def qna(question):
 
-    start_time = time.time()
-    ans = input(question + " (yes/no): ").lower().strip()
-    end_time = time.time()
+    while True:
+        start_time = time.time()
+        ans = input(question + " (yes/no): ").lower().strip()
+        end_time = time.time()
+
+        if ans in ("yes", "no"):
+            break
+        print("Please answer yes or no.")
 
     resp_time = end_time - start_time
-
-    #if ans != "yes" or "no":
-      #  print("please answer in yes or no") 
-      #  return                         figure out later
     #=========================================================
+
     #chance of telling truth is 54% before starting
     lie_chance = 0.40                                             
     #========================================================
@@ -21,9 +23,9 @@ def qna(question):
     if resp_time < 1.5:
         lie_chance += 0.08      #too fast to be true
     elif resp_time < 4:
-        lie_chance -= 0.10      #honest range
+        lie_chance -= 0.08      #honest range
     elif resp_time < 7:
-        lie_chance += 0.06      #too slow
+        lie_chance += 0.07      #too slow
     else:
         lie_chance += 0.12
     #==========================================================
@@ -85,6 +87,7 @@ questions = [
 answers = {}
 total_lie_per = 0
 cont_score = 0
+triggered = set()
 
 print("\nDisclaimer: This game, The 'lie detector' is completely made up. Plz don't sue me.")
 
@@ -95,18 +98,25 @@ for q in questions:
     total_lie_per += result
     answers[q] = ans
 
-    print("========================================================")
+    #contradiction 1. lied recently vs being honest
+    if questions[0] in answers and questions[8] in answers:
+        if answers[questions[0]] == "yes" and answers[questions[8]] == "yes":
+            if "cont1" not in triggered:
+                print("⚠ CONTRADICTION DETECTED: You lied recently but consider yourself honest?")
+                cont_score += 5
+                triggered.add("cont1")
 
-average = total_lie_per/len(questions)
+    #contradiction 2. confident vs doubts decisions
+    if questions[2] in answers and questions[6] in answers:
+        if answers[questions[2]] == "yes" and answers[questions[6]] == "yes":
+            if "cont2" not in triggered:
+                print("⚠ CONTRADICTION DETECTED: Confident yet always doubting yourself?")
+                cont_score += 5
+                triggered.add("cont2")
 
-if answers[questions[0]] == "yes" and answers[questions[8]] == "yes":
-    print("CONTRADICTION DETECTED WITH QUESTION NO. 1")
-    cont_score += 8
+print("========================================================")
 
-if answers[questions[2]] == "yes" and answers[questions[6]] == "yes":
-    print("CONTRADICTION DETECTED WITH QUESTION NO. 3")
-    cont_score += 8
-
+average = total_lie_per / len(questions)
 average += cont_score
 
 print("\n--==FINAL RESULT==--:")
