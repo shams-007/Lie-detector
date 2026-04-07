@@ -16,18 +16,18 @@ def qna(question):
     #=========================================================
 
     #chance of telling truth is 54% before starting
-    lie_chance = 0.40                                             
+    lie_chance = 0.30                                             
     #========================================================
 
     # increasing lie chance acc to response time
     if resp_time < 1.5:
-        lie_chance += 0.08      #too fast to be true
+        lie_chance += 0.30      #too fast to be true
     elif resp_time < 4:
-        lie_chance -= 0.08      #honest range
-    elif resp_time < 7:
-        lie_chance += 0.07      #too slow
+        lie_chance -= 0.05      #honest range
+    elif resp_time < 6:
+        lie_chance += 0.22      #too slow
     else:
-        lie_chance += 0.12
+        lie_chance += 0.35
     #==========================================================
 
     # if ans == "yes":
@@ -39,7 +39,7 @@ def qna(question):
     #=========================================================
 
     #random num between -0.05 and 0.05
-    lie_chance += random.uniform(-0.05, 0.05)
+    lie_chance += random.uniform(-0.08, 0.08)
 
     #==========================================================
     if lie_chance < 0:
