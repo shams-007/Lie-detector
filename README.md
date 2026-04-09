@@ -36,7 +36,7 @@ Make sure you have Python 3 installed.
 
 **Option 2 - Download the .exe (no python needed):**
 
-Download the latest release from the [Releases](https://github.com/shams-007/Lie-detector/releases) and run it
+Download the exe file from the [Releases](https://github.com/shams-007/Lie-detector/releases) and run it
 
 ---
 
