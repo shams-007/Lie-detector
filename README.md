@@ -54,5 +54,4 @@ Download the latest release from the [Releases](https://github.com/shams-007/Lie
 - or anything you find fun
 
 ---
----
 
