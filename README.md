@@ -51,7 +51,7 @@ Download the latest release from the [Releases](https://github.com/shams-007/Lie
 **You can contribute by**
 - adding more interesting questions
 - improving the lie detection logic
-- or anything you find fun
+- or fix anything that bugs you
 
 ---
 
