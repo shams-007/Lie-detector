@@ -4,7 +4,7 @@
 ---
 
 ## What is it?
-***Lie Detector Terminal*** is a fun CLI game that tries to figure out if you're lying or not by asking yes/no questions.
+***Lie Detector Terminal*** is a fun CLI game that tries to figure out if you're lying just by using basic psychology and asking yes/no questions.
 
 ---
 
